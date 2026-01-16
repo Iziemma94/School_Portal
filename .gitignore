@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.log
+
+# Virtual environment
+venv/
+env/
+
+# Django static/media
+staticfiles/
+media/
+
+# Node.js
+node_modules/
+build/
+dist/
+
+# React environment files
+frontend/school_portal_ui/.env
+
+# OS files
+.DS_Store
+Thumbs.db
