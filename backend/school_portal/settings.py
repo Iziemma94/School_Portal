@@ -54,6 +54,8 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
+AUTH_USER_MODEL = 'core.User'
+
 CORS_ALLOW_ALL_ORIGINS = True  # allow React frontend to connect
 
 ROOT_URLCONF = 'school_portal.urls'
@@ -76,17 +78,26 @@ TEMPLATES = [
 WSGI_APPLICATION = 'school_portal.wsgi.application'
 
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
+from decouple import config
+
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'school_portal',
-        'USER': 'school_user',
-        'PASSWORD': 'yourpassword',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
     }
 }
 
